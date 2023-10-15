@@ -15,4 +15,3 @@ class LoginPageLocators:
     @property
     def login_button(self) -> tuple:
         return (By.CSS_SELECTOR, f'{self.LOGIN_FORM_LOCATOR} [data-test="login-button"]')
-
