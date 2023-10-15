@@ -20,12 +20,16 @@ def step_impl(context, expected_items):
     list_size = len(page.get_all_items())
 
     assert int(list_size) == int(expected_items)
-    time.sleep(3)
 
 
-@then('I should not see any wrong image on products')
-def step_impl(context):
+@then('I should "{expected_to_see}" wrong images on products')
+def step_impl(context, expected_to_see):
     driver: webdriver = context.browser
     page: InventoryPage = InventoryPage(driver)
 
-    assert not page.has_wrong_image(), "Page is not displaying properly the products image"
+    if expected_to_see == 'see':
+        assert page.has_wrong_image(), "Normal images are being displayed"
+    elif expected_to_see == 'not see':
+        assert not page.has_wrong_image(), "Page is not displaying properly the products image"
+    else:
+        raise ValueError("Wrong parameter sent")

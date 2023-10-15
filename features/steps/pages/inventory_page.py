@@ -18,7 +18,7 @@ class InventoryPage(BasePage):
 
     def has_wrong_image(self) -> bool:
         try:
-            super().wait_for_element(self.locators.wrong_image(), 3)
+            super().wait_for_element(self.locators.wrong_image, 3)
             return True
         except TimeoutException:
             return False
