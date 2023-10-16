@@ -33,6 +33,9 @@ class LoginPage(BasePage):
     def click_on_login_button(self) -> None:
         super().click(self.locators.login_button)
 
+    def get_error_message(self) -> str:
+        return super().get_text(self.locators.error_message)
+
 
 
 

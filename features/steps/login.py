@@ -39,3 +39,11 @@ def step_impl(context):
     page: LoginPage = context.page
     page.click_on_login_button()
     # time.sleep(5)
+
+
+@then('I should see the error message "{error_message}"')
+def step_impl(context, error_message):
+    page: LoginPage = context.page
+    assert error_message in page.get_error_message()
+
+# I should see the error message "Sorry, this user has been locked out."
