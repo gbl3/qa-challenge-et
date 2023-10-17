@@ -1,5 +1,3 @@
-import time
-
 from behave import *
 from selenium import webdriver
 from features.steps.pages.inventory_page import InventoryPage

@@ -35,8 +35,3 @@ class LoginPage(BasePage):
 
     def get_error_message(self) -> str:
         return super().get_text(self.locators.error_message)
-
-
-
-
-

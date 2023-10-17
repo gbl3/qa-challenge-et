@@ -1,5 +1,3 @@
-import time
-
 from behave import *
 from selenium import webdriver
 from features.steps.pages.login_page import LoginPage
