@@ -24,3 +24,16 @@ Feature: login and logout on SauceDemo
     And I type my password "secret_sauce"
     And I click on the Login button
     Then I should see the error message "Sorry, this user has been locked out."
+
+  Scenario: Try to login using invalid username and password
+    Given I am on SauceDemo homepage
+    When I type my username "invalid_username"
+    And I type my password "invalid_password"
+    And I click on the Login button
+    Then I should see the error message "Username and password do not match any user"
+
+Scenario: Logout from app
+    Given I am logged in
+    When I click on the hamburger menu button
+    And I click on the "logout" link inside the hamburger menu
+    Then I should be redirected to the "home" page

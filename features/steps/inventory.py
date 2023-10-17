@@ -9,7 +9,17 @@ from features.steps.pages.inventory_page import InventoryPage
 def step_impl(context, expected_page):
     driver: webdriver = context.browser
     url = driver.current_url
-    assert expected_page in url
+    inventory_page: InventoryPage = InventoryPage(driver)
+
+    mapped_urls: dict = {
+        'home': context.page.pageURL,
+        'inventory': inventory_page.pageURL
+    }
+
+    if expected_page not in mapped_urls.keys():
+        raise ValueError('Wrong option sent, please fix')
+
+    assert mapped_urls[expected_page] in url
 
 
 @then('I should see "{expected_items}" items listed on the page')
